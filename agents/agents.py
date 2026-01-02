@@ -7,7 +7,7 @@ load_dotenv()
 
 prompts = load_prompts()
 test_prompt = prompts["test_prompt"]
-print(test_prompt)
+#print(test_prompt)
 
 
 test_agent = create_agent(
