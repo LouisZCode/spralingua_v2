@@ -8,12 +8,13 @@ prompts = load_prompts()
 test_prompt = prompts["test_prompt"]
 
 
-# Your agent (unchanged)
+
+CONVERSATIONAL_MODEL = "openai:gpt-5-nano"
+
 _raw_agent = create_agent(
-    model="openai:gpt-5-mini",
+    model=CONVERSATIONAL_MODEL,
     system_prompt=test_prompt
 )
-
 
 # Wrapper function for Pipecat compatibility
 async def _astream(input_dict, config=None):
@@ -31,4 +32,5 @@ async def _astream(input_dict, config=None):
 
 # Export wrapper that Pipecat can use
 class test_agent:
+    model = CONVERSATIONAL_MODEL
     astream = staticmethod(_astream)

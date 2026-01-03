@@ -7,6 +7,6 @@ test_agent
 
 """
 
-from .agents import test_agent
+from .agents import test_agent, _raw_agent
 
 print("Agents module loaded correctly...")

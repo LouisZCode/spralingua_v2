@@ -12,6 +12,8 @@ DESIGN_SPECS.md
 
 # Logs
 *.log
+logs/conversations/*.log
+!logs/conversations/.gitkeep
 
 # Environment variables / secrets
 .env

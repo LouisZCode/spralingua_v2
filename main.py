@@ -5,24 +5,9 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-
-#agent testing
-from agents import test_agent
-
-test_message = "Dime un chiste sobre san luis potosi"
-
-result = test_agent.invoke(
-    {"messages":[{"role": "user", "content": test_message}]}
-)
-
-for i, msg in enumerate(result["messages"]):
-    msg.pretty_print()
-
-answer = result["messages"][-1].content
-
 api_key = os.getenv("MINIMAX_API_KEY")
 
-text = answer
+text = "Servus! Ich bin deine Sprachlehrer aus Bayern. Gemeinsam lernen wir Deutsch auf eine entspannte und freundliche Art. Lass uns anfangen!"
 
 response = requests.post(
     "https://api.minimax.io/v1/t2a_v2",
@@ -35,11 +20,11 @@ response = requests.post(
         "text": text,
         "stream": False,
         "voice_setting": {
-            "voice_id": "female-shaonv",
+            "voice_id": "german_bavarian_male_v3",   #german_bavarian_female, german_bavarian_male_v2
             "speed": 1,
             "vol": 1,
             "pitch": 0,
-            "emotion": "neutral"
+            "emotion": "happy"
         },
         "audio_setting": {
             "sample_rate": 32000,
