@@ -3,10 +3,6 @@ import requests
 import os
 from dotenv import load_dotenv
 
-import requests
-import os
-from dotenv import load_dotenv
-
 load_dotenv()
 
 
@@ -18,6 +14,9 @@ test_message = "Dime un chiste sobre san luis potosi"
 result = test_agent.invoke(
     {"messages":[{"role": "user", "content": test_message}]}
 )
+
+for i, msg in enumerate(result["messages"]):
+    msg.pretty_print()
 
 answer = result["messages"][-1].content
 
@@ -39,14 +38,16 @@ response = requests.post(
             "voice_id": "female-shaonv",
             "speed": 1,
             "vol": 1,
-            "pitch": 0
+            "pitch": 0,
+            "emotion": "neutral"
         },
         "audio_setting": {
             "sample_rate": 32000,
             "bitrate": 128000,
             "format": "mp3",
             "channel": 1
-        }
+        },
+        "language_boost": "auto"
     }
 )
 
@@ -62,17 +63,3 @@ with open("output.mp3", "wb") as f:
 
 print("Done! Audio saved to output.mp3")
 
-
-
-
-#agent testing
-from agents import test_agent
-
-test_message = "Dime un chiste sobre san luis potosi"
-
-result = test_agent.invoke(
-    {"messages":[{"role": "user", "content": test_message}]}
-)
-
-for i, msg in enumerate(result["messages"]):
-    msg.pretty_print() 
