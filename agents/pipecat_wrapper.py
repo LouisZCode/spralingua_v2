@@ -18,7 +18,7 @@ async def _astream(input_dict, config=None):
     async for token, metadata in _raw_agent.astream(
         messages,
         config=run_config,
-        context=Context(user_level="expert"),
+        context=Context(),
         stream_mode="messages"
     ):
         # Only yield content from model node (not tool calls)
