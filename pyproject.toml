@@ -6,8 +6,10 @@ readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
     "aiohttp>=3.13.2",
+    "gradio>=6.2.0",
     "langchain>=1.2.0",
     "langchain-openai>=1.1.6",
+    "pipecat>=0.3.0",
     "pipecat-ai[deepgram,silero]>=0.0.98",
     "pyaudio>=0.2.14",
     "pydub>=0.25.1",
